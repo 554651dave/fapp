@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Registration</title>
+</head>
+<body>
+    <h2>Register Product</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Category:</label><br>
+        <input type="text" name="category" required><br><br>
+
+        <label>Product Name:</label><br>
+        <input type="text" name="name" required><br><br>
+
+        <label>Brand:</label><br>
+        <input type="text" name="brand" required><br><br>
+
+        <label>Image:</label><br>
+        <input type="file" name="image"><br><br>
+
+        <label>Price:</label><br>
+        <input type="number" name="price" required><br><br>
+
+        <label>Discount:</label><br>
+        <input type="number" name="discound" required><br><br>
+
+        <label>Description:</label><br>
+        <input type="text" name="description" required><br><br>
+
+        <label>Stock:</label><br>
+        <input type="number" name="stock" required><br><br>
+
+        <label>Is Available:</label>
+        <input type="checkbox" name="is_available" checked><br><br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background-color: #f4f4f4;
+        }
+        .profile-container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+        } 
+        .field {
+            margin-bottom: 20px;
+        }
+        .field strong {
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <h2>User Profile</h2>
+
+        <div class="field">
+            <strong>Name:</strong> {{ user.name }}
+        </div>
+
+        <div class="field">
+            <strong>id:</strong> {{ user.id }}
+        </div>
+
+        <div class="field">
+            <strong>Age:</strong> {{ user.age }}
+        </div>
+
+        <div class="field">
+            <strong>Email:</strong> {{ user.email }}
+        </div>
+
+        <div class="field">
+            <strong>Password:</strong> {{ user.password }} 
+        </div>
+
+        <div class="field">
+            <strong>Image:</strong><br>
+            {% if user.image %}
+                <img src="{{ user.image.url }}" alt="Profile Image">
+            {% else %}
+                <p>No image uploaded.</p>
+            {% endif %}
+        </div>
+        <a href="{% url 'edit_profile' %}" class="edit_profile">edit profile</a>
+        <a href="/delete/{{ user.id }}/">delete</a>
+    </div>
+
+</body>
+</html> 

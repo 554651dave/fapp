@@ -1,0 +1,17 @@
+<!-- cart_quantity.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enter Quantity</title>
+</head>
+<body>
+    <h2>Enter Quantity for {{ product.product_name }}</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" min="1" max="{{ product.product_stock }}" required>
+        <button type="submit">Add to Cart</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!-- product_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product List</title>
+</head>
+<body>
+    <h2>All Products</h2>
+
+    {% if products %}
+        <ul>
+            {% for product in products %}
+                <li>
+                    <h3>{{ product.product_name }}</h3>
+                    <p><strong>Category:</strong> {{ product.product_category }}</p>
+                    <p><strong>Brand:</strong> {{ product.product_brand }}</p>
+                    <p><strong>Price:</strong> ₹{{ product.product_price }}</p>
+                    <p><strong>Discount:</strong> {{ product.product_discound }}%</p>
+                    <p><strong>Description:</strong> {{ product.product_description }}</p>
+                    <p><strong>Stock:</strong> {{ product.product_stock }}</p>
+                    <p><strong>Available:</strong> {{ product.product_IsAvailable|yesno:"Yes,No" }}</p>
+                    {% if product.product_image %}
+                        <p><img src="{{ product.product_image.url }}" alt="Product Image" width="150"></p>
+                    {% endif %}
+
+                    <!-- Add to Cart button -->
+                    <form method="get" action="{% url 'add_to_cart' product.id %}">
+                        <button type="submit">Add to Cart</button>
+                    </form>
+                    <hr>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No products available.</p>
+    {% endif %}
+</body>
+</html>
